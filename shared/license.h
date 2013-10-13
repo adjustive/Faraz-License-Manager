@@ -45,12 +45,14 @@ struct LicenseInfo_2 // I will get upset if these DON'T change
     byte random[SALT_SIZE];
     timeval time1;
     time_t time2;
+    unsigned int counter;
     byte salt[SALT_SIZE];
 
     LicenseInfo_2()
     {
         memset(random, 0, SALT_SIZE);
         memset(salt  , 0, SALT_SIZE);
+        counter = 0;
     }
 
     void fill()
@@ -60,6 +62,7 @@ struct LicenseInfo_2 // I will get upset if these DON'T change
         rng.GenerateBlock(random, SALT_SIZE);
         gettimeofday(&time1, NULL);
         time2 = time(0);
+        counter++;
     }
 
     void print()
@@ -67,6 +70,7 @@ struct LicenseInfo_2 // I will get upset if these DON'T change
         cout << "Random = " << HexUtil::toHex(random, SALT_SIZE) << endl;
         cout << "Time1  = " << HexUtil::toHex((byte*)&time1, sizeof(time1)) << endl;
         cout << "Time2  = " << HexUtil::toHex((byte*)&time2, sizeof(time2)) << endl;
+        cout << "CNTR   = " << counter << endl;
         cout << "Salt2  = " << HexUtil::toHex(salt  , SALT_SIZE) << endl;
     }
 };
@@ -78,7 +82,7 @@ struct LicenseInfo_3
     byte salt[SALT_SIZE];
     byte hash3[HASH_ALGO::DIGESTSIZE];
 
-    void calc_hash(LicenseInfo_1 l1, LicenseInfo_2 l2)
+    void update(LicenseInfo_1 l1, LicenseInfo_2 l2)
     {
         memcpy(salt, SALT_3, SALT_SIZE);
         HASH_ALGO hash;

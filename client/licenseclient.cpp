@@ -10,7 +10,7 @@ LicenseClient::LicenseClient(unsigned int s, unsigned int f)
     li.l1.pid.calc_exe();
     li.l1.fill();
     li.l2.fill();
-    li.l3.calc_hash(li.l1, li.l2);
+    li.l3.update(li.l1, li.l2);
 }
 
 LicenseInfo LicenseClient::getLicenseInfo()
@@ -24,8 +24,6 @@ void LicenseClient::printLicenseInfo()
     li.l2.print();
     li.l3.print();
 }
-
-
 
 int LicenseClient::checkLicense2()
 {
