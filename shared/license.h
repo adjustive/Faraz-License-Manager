@@ -13,8 +13,8 @@
 
 #define SALT_SIZE 32
 #define SALT_1 "12345678901234567890123456789012"
-#define SALT_2 "12345678901234567890123456789012"
-#define SALT_3 "12345678901234567890123456789012"
+#define SALT_2 "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEF"
+#define SALT_3 "~!@#$%^&*()_+{}:<>?~!@#$%^&*()_+"
 
 struct LicenseInfo_1 // I will get upset if these change
 {

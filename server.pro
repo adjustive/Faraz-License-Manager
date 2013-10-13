@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core
-
+QT       += core network
 QT       -= gui
 
 TARGET = server
@@ -31,7 +30,9 @@ SOURCES += server/main.cpp \
     shared/rsautil.cpp \
     shared/hexutil.cpp \
     shared/license.cpp \
-    server/licenseserver.cpp
+    server/licenseserver.cpp \
+    server/netserver.cpp \
+    shared/netobject.cpp
 
 HEADERS += \
     shared/rsautil.h \
@@ -41,4 +42,7 @@ HEADERS += \
     shared/license.h \
     shared/cryptopp.h \
     shared/cpuid.h \
-    server/licenseserver.h
+    server/licenseserver.h \
+    server/netserver.h \
+    shared/netconst.h \
+    shared/netobject.h
