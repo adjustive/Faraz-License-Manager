@@ -17,10 +17,13 @@ TEMPLATE = app
 
 SOURCES += client/main.cpp \
     shared/rsautil.cpp \
-    shared/hexutil.cpp
+    shared/hexutil.cpp \
+    client/license.cpp
 
 HEADERS += \
     shared/rsautil.h \
     shared/productid.h \
     shared/hexutil.h \
-    shared/hardwareuid.h
+    shared/hardwareuid.h \
+    client/license.h \
+    client/cpuid.h
