@@ -10,7 +10,7 @@ int License::checkLicense1(vector<byte> license, LicenseInfo li)
 
     int buffer_size = HASH_ALGO::DIGESTSIZE + license.size() + 32;
     byte* buffer = new byte[buffer_size];
-    memcpy(buffer, &li.l2.hash1, HASH_ALGO::DIGESTSIZE);
+    memcpy(buffer, &li.l3.hash1, HASH_ALGO::DIGESTSIZE);
     memcpy(buffer + HASH_ALGO::DIGESTSIZE, license.data(), license.size());
     memcpy(buffer + buffer_size - 32, SALT_2, 32);
 

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     cout << "Hash 1: ";
     cin >> hash1;
     bhash1 = HexUtil::fromHex(hash1);
-    memcpy(li.l2.hash1, bhash1.data(), bhash1.size());
+    memcpy(li.l3.hash1, bhash1.data(), bhash1.size());
 
     cout << "Finding a valid license..." << endl;
     cout << "License: " << ls.generateLicense1(li) << endl;

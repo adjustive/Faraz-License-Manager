@@ -8,9 +8,9 @@ LicenseClient::LicenseClient(unsigned int s, unsigned int f)
     li.l1.pid.features = f;
     li.l1.uid.collect();
     li.l1.pid.calc_exe();
-    li.l1.fill_salt();
-    li.l1.fill_random();
-    li.l2.calc_hash(li.l1);
+    li.l1.fill();
+    li.l2.fill();
+    li.l3.calc_hash(li.l1, li.l2);
 }
 
 LicenseInfo LicenseClient::getLicenseInfo()
@@ -22,6 +22,7 @@ void LicenseClient::printLicenseInfo()
 {
     li.l1.print();
     li.l2.print();
+    li.l3.print();
 }
 
 
