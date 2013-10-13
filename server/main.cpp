@@ -1,25 +1,25 @@
 #include <QCoreApplication>
+#include <iostream>
+#include "licenseserver.h"
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    License lic;
+    LicenseServer ls;
+    LicenseInfo li;
 
-    UniqueID uid;
     string hash1;
-    byte* h1;
-    int len;
+    vector<byte> bhash1;
     cout << "Hash 1: ";
     cin >> hash1;
-    lic.fromHex(hash1, h1, len);
-    memcpy(uid.hash1, h1, len);
-
-    lic.setUID(uid);
+    bhash1 = HexUtil::fromHex(hash1);
+    memcpy(li.l2.hash1, bhash1.data(), bhash1.size());
 
     cout << "Finding a valid license..." << endl;
-    cout << "License: " <<lic.generateLicense1() << endl;
-
+    cout << "License: " << ls.generateLicense1(li) << endl;
 
     return a.exec();
 }

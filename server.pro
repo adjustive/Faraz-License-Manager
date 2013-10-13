@@ -14,15 +14,31 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
+target.path = /usr/lib
+INSTALLS += target
+LIBS += -lcryptopp
+
+INCLUDEPATH += $$PWD/shared
+
+LIBS += -L$$PWD/ -lcryptopp
+INCLUDEPATH += $$PWD/cryptopp562
+DEPENDPATH += $$PWD/cryptopp562
+PRE_TARGETDEPS += $$PWD/libcryptopp.a
+
+
 
 SOURCES += server/main.cpp \
     shared/rsautil.cpp \
     shared/hexutil.cpp \
-    server/license.cpp
+    shared/license.cpp \
+    server/licenseserver.cpp
 
 HEADERS += \
     shared/rsautil.h \
     shared/productid.h \
     shared/hexutil.h \
     shared/hardwareuid.h \
-    server/license.h
+    shared/license.h \
+    shared/cryptopp.h \
+    shared/cpuid.h \
+    server/licenseserver.h
