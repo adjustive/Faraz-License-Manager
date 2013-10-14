@@ -5,8 +5,8 @@
 #include "hexutil.h"
 #include "cryptopp.h"
 
-//#define EXE_HASH_ALGO SHA3_256
-#define EXE_HASH_ALGO MD5
+#define EXE_HASH_ALGO SHA3_256
+//#define EXE_HASH_ALGO MD5
 
 using namespace std;
 

@@ -14,15 +14,14 @@ int main(int argc, char *argv[])
     cout << "Requested Features: ";
     cin >> f;
 
-    LicenseClient lc(s, f);
-    lc.printLicenseInfo();
+    LicenseClient *lc = LicenseClient::instance();
+    lc->init(s, f);
+    lc->printLicenseInfo();
 
-    string userLicense;
+    string key1;
     cout << "Enter License: ";
-    cin >> userLicense;
-
-    cout << License::checkLicense1(userLicense, lc.getLicenseInfo()) << endl;
-    cout << lc.checkLicense2() << endl;
+    cin >> key1;
+    cout << lc->setKey1(key1) << endl;
 
     return a.exec();
 }

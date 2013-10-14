@@ -1,9 +1,12 @@
 #ifndef NETCONST_H
 #define NETCONST_H
 
-#define SERVER_PORT 4001
-#define CLIENT_PORT 4002
-#define MULTICAST_GROUP "224.5.23.9"
-#define TIMER_INTERVAL 5000
+#define SERVER_PORT         4001
+#define CLIENT_PORT         4002
+#define MULTICAST_GROUP     "224.5.23.9"
+#define TIMER_INTERVAL      1000 //5000
+#define NET_SERVER_ADDRESS  "192.168.0.1"
+#define NET_SERVER_PORT_TCP 4003
+#define NET_SERVER_PORT_UDP 4004
 
 #endif // NETCONST_H

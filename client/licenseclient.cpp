@@ -1,16 +1,39 @@
 #include "licenseclient.h"
 
-LicenseClient::LicenseClient(unsigned int s, unsigned int f)
+LicenseClient::LicenseClient()
+{
+}
+
+LicenseClient* LicenseClient::instance()
+{
+    static LicenseClient lc;
+    return &lc;
+}
+
+void LicenseClient::update()
+{
+    li.l2.update();
+    li.l3.update(li.l1, li.l2);
+}
+
+void LicenseClient::init(unsigned int s, unsigned int f)
 {
     li.l1.pid.product = PRODUCT_ID;
     li.l1.pid.version = PRODUCT_VER;
     li.l1.pid.serial = s;
     li.l1.pid.features = f;
-    li.l1.uid.collect();
-    li.l1.pid.calc_exe();
-    li.l1.fill();
-    li.l2.fill();
-    li.l3.update(li.l1, li.l2);
+    update();
+}
+
+int LicenseClient::setKey1(string key1)
+{
+    li.key1 = HexUtil::fromHex(key1);
+    return License::checkLicense1(li.key1, li);
+}
+
+int LicenseClient::getFeature(unsigned int f)
+{
+    return 0;
 }
 
 LicenseInfo LicenseClient::getLicenseInfo()

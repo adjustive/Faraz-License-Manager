@@ -3,6 +3,7 @@
 
 #include "cryptopp.h"
 #include "license.h"
+#include "netclient.h"
 
 #define PRODUCT_ID  1
 #define PRODUCT_VER 2
@@ -11,14 +12,22 @@
 class LicenseClient
 {
 public:
-    LicenseClient(unsigned int s, unsigned int f);
+    static LicenseClient* instance();
+    void init(unsigned int s, unsigned int f);
+    int setKey1(string key1);
+    void update();
+    int getFeature(unsigned int f);
+
     LicenseInfo getLicenseInfo();
     void printLicenseInfo();
 
     int checkLicense2();
 
 private:
+    LicenseClient();
     LicenseInfo li;
+    NetClient nc;
+
 };
 
 #endif // LICENSECLIENT_H

@@ -25,10 +25,12 @@ struct LicenseInfo_1 // I will get upset if these change
     LicenseInfo_1()
     {
         memset(salt, 0, SALT_SIZE);
-    }
-
-    void fill()
-    {
+        uid.collect();
+        pid.product = 0;
+        pid.version = 0;
+        pid.serial = 0;
+        pid.features = 0;
+        pid.calc_exe();
         memcpy(salt, SALT_1, SALT_SIZE);
     }
 
@@ -55,7 +57,7 @@ struct LicenseInfo_2 // I will get upset if these DON'T change
         counter = 0;
     }
 
-    void fill()
+    void update()
     {
         memcpy(salt, SALT_2, SALT_SIZE);
         AutoSeededRandomPool rng;
@@ -105,7 +107,8 @@ struct LicenseInfo
     LicenseInfo_1 l1;
     LicenseInfo_2 l2;
     LicenseInfo_3 l3;
-    byte license_key[LI_SIZE];
+    vector<byte> key1;
+    vector<byte> key2;
 };
 
 class License

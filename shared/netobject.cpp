@@ -3,7 +3,7 @@
 NetObject::NetObject(quint16 listenPort, QObject *parent) :
     QObject(parent)
 {
-    udp.bind(QHostAddress::Any, listenPort, QUdpSocket::ReuseAddressHint);
+    udp.bind(QHostAddress::AnyIPv4, listenPort, QUdpSocket::ReuseAddressHint);
     udp.joinMulticastGroup(QHostAddress(MULTICAST_GROUP));
     connect(&udp, SIGNAL(readyRead()), this, SLOT(readPendingDatagrams()));
     timer.start(TIMER_INTERVAL);

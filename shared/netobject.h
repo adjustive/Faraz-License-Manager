@@ -13,8 +13,10 @@ class NetObject : public QObject
 public:
     explicit NetObject(quint16 listenPort, QObject *parent = 0);
 
-private:
+protected:
     QUdpSocket udp;
+
+private:
     QTimer timer;
     virtual void processTheDatagram(QByteArray &datagram, QHostAddress &sender, quint16 senderPort) = 0;
 

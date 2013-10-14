@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     memcpy(li.l3.hash1, bhash1.data(), bhash1.size());
 
     cout << "Finding a valid license..." << endl;
-    cout << "License: " << ls.generateLicense1(li) << endl;
+    //cout << "License: " << ls.generateLicense1(li) << endl;
 
     return a.exec();
 }
