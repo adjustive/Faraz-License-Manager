@@ -11,6 +11,7 @@ public:
 
 private:
     virtual void processTheDatagram(QByteArray &datagram, QHostAddress &sender, quint16 senderPort);
+    unsigned int rand_id;
 
 signals:
 

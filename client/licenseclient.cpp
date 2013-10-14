@@ -27,8 +27,12 @@ void LicenseClient::init(unsigned int s, unsigned int f)
 
 int LicenseClient::setKey1(string key1)
 {
-    li.key1 = HexUtil::fromHex(key1);
-    return License::checkLicense1(li.key1, li);
+    vector<byte> vk1;
+    vk1 = HexUtil::fromHex(key1);
+    int min = LI_SIZE < vk1.size() ? LI_SIZE : vk1.size();
+    memcpy(li.key1, vk1.data(), min);
+    memset(li.key1+min, 0, LI_SIZE - min);
+    return License::checkLicense1(vk1, li);
 }
 
 int LicenseClient::getFeature(unsigned int f)

@@ -107,8 +107,8 @@ struct LicenseInfo
     LicenseInfo_1 l1;
     LicenseInfo_2 l2;
     LicenseInfo_3 l3;
-    vector<byte> key1;
-    vector<byte> key2;
+    byte key1[LI_SIZE];
+    byte key2[LI_SIZE];
 };
 
 class License

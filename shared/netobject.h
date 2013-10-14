@@ -15,10 +15,10 @@ public:
 
 protected:
     QUdpSocket udp;
+    virtual void processTheDatagram(QByteArray &datagram, QHostAddress &sender, quint16 senderPort) = 0;
 
 private:
     QTimer timer;
-    virtual void processTheDatagram(QByteArray &datagram, QHostAddress &sender, quint16 senderPort) = 0;
 
 signals:
 
